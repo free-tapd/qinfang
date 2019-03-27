@@ -1,11 +1,11 @@
 <template>
   <div class="vg">
-    <x-header :left-options="{backText: '',showBack: true}">
+    <!-- <x-header :left-options="{backText: '',showBack: true}">
       住院导航
       <a slot="right">
         <span class="iconfont icon-fenxiang"></span>
       </a>
-    </x-header>
+    </x-header> -->
     <div class="content">
       <div class="bg-picture">
         <!-- 标注信息 -->

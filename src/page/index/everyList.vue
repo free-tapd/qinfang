@@ -1,6 +1,6 @@
 <template>
   <div class="every-list vg">
-    <x-header :left-options="{backText: '',showBack: true}">每日清单</x-header>
+    <!-- <x-header :left-options="{backText: '',showBack: true}">每日清单</x-header> -->
     <div class="bg-top"></div>
 
 

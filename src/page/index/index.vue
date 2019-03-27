@@ -7,7 +7,7 @@
       <swiper :list="baseList" loop="true" auto="true" dots-position="center"></swiper>
       <!-- 预约挂号 -->
       <div class="appointment-box flex-r">
-        <div class="appointment-left flex-c vux-1px-r">
+        <div class="appointment-left flex-c vux-1px-r" @click="changeJump('/departments',{})">
           <img src="../../assets/images/appoint-left.png" alt>
           <p>预约挂号</p>
           <span class="min-title">快速挂号精准预约</span>
@@ -195,7 +195,8 @@ export default {
       } else if (i == 2) {
         this.changeJump("/Hospitalization", {});
       } else {
-        this.changeJump("/queryReport", {});
+        // this.changeJump("/queryReport", {});
+        this.changeJump("/Hospitalization", {});
       }
     },
     /**

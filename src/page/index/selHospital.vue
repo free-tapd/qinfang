@@ -2,10 +2,10 @@
   <div class="vg departments">
     <!-- 选择科室 -->
     <!-- 预约挂号 -->
-    <div class="departments-hospital-title vux-1px-b flex-r">
+    <!-- <div class="departments-hospital-title vux-1px-b flex-r">
       <span>河北省人民第六医院</span>
       <span class="funbg icon-choose"></span>
-    </div>
+    </div> -->
     <div class="departments-list flex-r">
       <!-- 左边 -->
       <ul class="department-left">
@@ -13,7 +13,7 @@
       </ul>
       <!-- 右边 -->
       <ul class="department-right">
-        <li v-for=" v in 10" :key="v" class="flex-r">
+        <li v-for=" v in 10" :key="v" class="flex-r" @click="changeJump('/departments',{})">
             <p class=" funbg icon-hos"></p>
             <div class="hospital-inner">
                 <p> 河北医科大学第二医院</p>
@@ -84,6 +84,9 @@ export default {
     // justify-content: baseline;
     font-size: 30px;
     > .department-left {
+      // position: fixed;
+      // bottom: 0;
+      // left: 0;
       flex: 1;
       > li {
         padding: 30px 0;

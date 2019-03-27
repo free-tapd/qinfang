@@ -1,6 +1,6 @@
 <template>
   <div>
-    <x-header :left-options="{backText: '',showBack: true}">历史清单</x-header>
+    <!-- <x-header :left-options="{backText: '',showBack: true}">历史清单</x-header> -->
     <div class="bg-top"></div>
     <div class="content">
       <!-- 引入组件 -->

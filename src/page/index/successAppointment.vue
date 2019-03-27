@@ -6,12 +6,12 @@
       <!-- 支付成功 -->
       <!-- <img src="../../assets/images/bg_ico_bg@2x.png" alt> -->
       <!-- 支付失败 -->
-      <img src="../../assets/images/bg_ico_bg2@2x.png" alt="">
+      <img src="../../assets/images/bg_ico_bg2@2x.png" alt>
       <div class="pay-result flex-c">
         <i class="funbg succ-pay"></i>
         <!-- <i class="funbg err-pay"></i>/ -->
-        <!-- <span>支付成功</span> -->
-        <span> 支付失败</span>
+        <!-- <span>恭喜您，预约成功！</span> -->
+        <span>预约失败</span>
       </div>
 
       <!-- 失败 -->
@@ -20,34 +20,30 @@
     <!-- v-if="充值成功 -->
     <div class="pay-message">
       <p>
-        <span>医院名称：</span>
-        <span>河北医科大学第二医院</span>
+        <span class="title">就诊取号：</span>
+        <span class="inner">就诊当天请携带就诊卡，无就诊就诊当天请携带就诊卡，无就诊就诊当天请携带就诊卡</span>
       </p>
       <p>
-        <span>订 单 号：</span>
-        <span>31224122141211</span>
+        <span class="title">取消预约：</span>
+        <span class="inner">就诊当天请携带就诊卡，无就诊就诊当天请携带就诊卡，无就诊就诊当天请携带就诊卡</span>
       </p>
       <p>
-        <span>充值时间：</span>
-        <span>2017-05-12 8：00</span>
+        <span class="title">在线预约：</span>
+        <span class="inner">通过点击“我的”，选择“我的预约”取消预约</span>
       </p>
       <p>
-        <span>用户姓名：</span>
-        <span>李素贞</span>
-      </p>
-      <p>
-        <span>就诊卡号：</span>
-        <span>A4545315453141</span>
-      </p>
-      <p>
-        <span>充值金额：</span>
-        <span style="color:red">258666</span>
+        <span class="title">电话预约：</span>
+        <span class="inner">请致电12580-6取消预约</span>
       </p>
     </div>
     <!-- 否则失败 -->
     <div class="err-message">
       <p class="err-title">充值失败</p>
       <p>xxxxxxxxx</p>
+    </div>
+    <div class="appoint-btn flex-r">
+      <span >查看预约</span>
+      <span>预约陪诊</span>
     </div>
   </div>
 </template>
@@ -62,7 +58,7 @@ export default {
      * @ 根据参数判断 title or 显示 success or err 的界面
      * @ 的方法
      */
-    document.getElementById("QF").innerHTML = "充值成功";
+    document.getElementById("QF").innerHTML = "预约成功";
     next();
   }
 };
@@ -117,6 +113,22 @@ export default {
     padding: 30px;
     font-size: 34px;
     color: #333;
+    > p {
+      display: flex;
+      flex-direction: column;
+      > .title {
+        color: #558eff;
+        font-size: 30px;
+        font-weight: bold;
+      }
+      > .inner {
+        font-size: 28px;
+        color: #666;
+      }
+    }
+    > p:not(:first-child) {
+      margin-top: 15px;
+    }
   }
   > .err-message {
     padding: 30px;
@@ -125,6 +137,28 @@ export default {
       color: #ffa900;
       font-weight: bold;
     }
+  }
+}
+.appoint-btn {
+  position: fixed;
+  left: 50%;
+  margin-left: -592px/2;
+  bottom: 45px;
+  width: 592px;
+  height: 88px;
+  background: rgba(0, 160, 234, 1);
+  border-radius: 44px;
+  margin: 0 auto;
+  >span{
+    flex:1;
+    color: #fff;
+    font-size: 34px;
+    text-align: center;
+    line-height: 88px;
+
+  }
+  >span:first-child{
+    border-right: 1px solid #fff;
   }
 }
 .succ-bg {

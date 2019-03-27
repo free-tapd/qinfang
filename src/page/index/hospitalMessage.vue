@@ -1,6 +1,6 @@
 <template>
   <div class="in-hospital">
-    <x-header :left-options="{backText: 'false',showBack: false}">住院信息</x-header>
+    <!-- <x-header :left-options="{backText: 'false',showBack: false}">住院信息</x-header> -->
     <div class="c">
       <group>
         <cell title="每日清单" :is-link="true" link="/everyList">

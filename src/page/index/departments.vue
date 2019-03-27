@@ -2,23 +2,30 @@
   <div class="vg departments">
     <!-- 选择科室 -->
     <!-- 预约挂号 -->
-    <div class="departments-hospital-title vux-1px-b flex-r">
+    <div class="departments-hospital-title vux-1px-b flex-r" ref="q1" @click="isSel=!isSel">
       <span>河北省人民第六医院</span>
       <span class="funbg icon-choose"></span>
     </div>
+    <!-- 引入组件xtab -->
+    <div class="c" ref="q2">
+      <Xtab :tabArr="tabData"/>
+    </div>
+
     <div class="departments-list flex-r">
-      <!-- 左边 -->
-      <ul class="department-left">
-        <li v-for="(v,i) in 10" :key="i" :class="{'active': i==cur}" @click="cur=i">内科</li>
-      </ul>
-      <!-- 右边 -->
-      <ul class="department-right">
-        <li v-for=" v in 10" :key="v">心血管内科</li>
-      </ul>
+      <div class="cv flex-r">
+        <!-- 左边 -->
+        <ul class="department-left">
+          <li v-for="(v,i) in 20" :key="i" :class="{'active': i==cur}" @click="cur=i">内科</li>
+        </ul>
+        <!-- 右边 -->
+        <ul class="department-right">
+          <li v-for=" v in 20" :key="v" @click="changeJump('/partmentsList',{})">心血管内科</li>
+        </ul>
+      </div>
     </div>
 
     <!-- 背景框 -->
-    <div class="cover" v-if="isShow">
+    <!-- <div class="cover" v-if="isShow">
       <div class="depart-message-box flex-r">
         <div class="depart-message flex-c">
           <div class="title">预约挂号须知</div>
@@ -37,16 +44,58 @@
           </div>
         </div>
       </div>
+    </div> -->
+    <!-- 选择医院 -->
+    <div class="cover" v-if="isSel" @click.stop="isSel=!isSel">
+      <div class="sel-hospital flex-r">
+        <!-- <div class="departments-list flex-r"> -->
+        <!-- 左边 -->
+        <ul class="department-left">
+          <li v-for="(v,i) in 10" :key="i" :class="{'active': i==cur}" @click.stop="cur=i">内科</li>
+        </ul>
+        <!-- 右边 -->
+        <ul class="department-right">
+          <li v-for=" v in 10" :key="v" class="flex-r">
+            <p class="funbg icon-hos"></p>
+            <div class="hospital-inner">
+              <p>河北医科大学第二医院</p>
+              <span>三级甲等</span>
+            </div>
+          </li>
+        </ul>
+        <!-- </div> -->
+      </div>
     </div>
   </div>
 </template>
 <script>
+import Xtab from "@/components/tab";
+import { log } from "util";
 export default {
   data() {
     return {
       isShow: true,
-      cur: 0
+      isSel:false,
+      cur: 0,
+      tabData: [{ id: 1, title: "东院" }, { id: 2, title: "西院" }]
     };
+  },
+  mounted() {
+    var clientHeight =
+      document.body.clientHeight || document.documentElement.clientHeight;
+    console.log(window.innerHeight);
+    console.log(clientHeight);
+    console.log(this.$refs.q1.offsetHeight);
+    console.log(this.$refs.q2.offsetHeight);
+  },
+  methods: {
+    // jisuan(){
+    //   this.
+    // }
+  },
+
+  components: {
+    Xtab
   }
 };
 </script>
@@ -54,6 +103,58 @@ export default {
 .active {
   color: #42a0e2;
   background-color: #fff;
+}
+.departments-list {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: (50px+50px) * 2.2;
+  overflow: scroll;
+
+  > .cv {
+    width: 100%;
+    justify-content: baseline;
+    align-items: center;
+    position: relative;
+    font-size: 30px;
+  }
+}
+.department-left {
+  background: rgba(248, 248, 248, 1);
+  // width: 25%;
+  // left: 0;
+  // top: 0;
+  // bottom: 0;
+  flex: 1;
+  > li {
+    padding: 30px 0;
+    text-align: center;
+  }
+}
+
+.department-right {
+  flex: 3;
+  background-color: #fff;
+  > li {
+    align-items: center;
+    padding: 30px 0;
+    margin-left: 40px;
+    > .icon-hos {
+      width: 68px;
+      height: 68px;
+      background-image: url("../../assets/images/logo1.png");
+    }
+    > .hospital-inner {
+      margin-left: 15px;
+      > p {
+      }
+      > span {
+        font-size: 24px;
+        color: #999;
+      }
+    }
+  }
 }
 .departments {
   position: relative;
@@ -73,26 +174,7 @@ export default {
       margin-left: 16px;
     }
   }
-  > .departments-list {
-    justify-content: baseline;
-    align-items: center;
-    font-size: 30px;
-    > .department-left {
-      flex: 1;
-      > li {
-        padding: 30px 0;
-        text-align: center;
-      }
-    }
-    > .department-right {
-      flex: 3;
-      background-color: #fff;
-      > li {
-        padding: 30px 0;
-        margin-left: 40px;
-      }
-    }
-  }
+
   & .depart-message-box {
     width: 100%;
     height: 100%;
@@ -150,6 +232,13 @@ export default {
         right: 37px;
       }
     }
+  }
+  & .sel-hospital {
+    position: relative;
+    height: 549px;
+    background-color: #fff;
+    overflow: scroll;
+    align-items: baseline;
   }
 }
 </style>

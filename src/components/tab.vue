@@ -1,5 +1,5 @@
 <template>
-    <div class="tab">
+    <div class="tab" ref="tabHeight">
     <tab :bar-active-color="barColor" :active-color="activeColor" :default-color="defaultColor" :line-width="1" >
         <tab-item v-for="(v,i) in tabArr" :selected="i==cur"  :key="i" @on-item-click="handlerId(v)">{{v.title}}</tab-item>
     </tab>
@@ -39,6 +39,10 @@ export default {
   components: {
     Tab,
     TabItem
+  },
+  mounted(){
+    var cHeight=this.$refs.tabHeight.offsetHeight
+    console.log('组件的高度',cHeight)
   },
   methods:{
       handlerId(v){

@@ -1,6 +1,6 @@
 <template>
   <div class="vg">
-    <x-header :left-options="{backText: '',showBack: true}">缴费明细</x-header>
+    <!-- <x-header :left-options="{backText: '',showBack: true}">缴费明细</x-header> -->
     <div class="bg-top"></div>
     <div class="bg-bottom">
       <div class="bg-inner-box">
