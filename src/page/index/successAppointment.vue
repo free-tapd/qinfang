@@ -8,7 +8,7 @@
       <!-- 支付失败 -->
       <img src="../../assets/images/bg_ico_bg2@2x.png" alt>
       <div class="pay-result flex-c">
-        <i class="funbg succ-pay"></i>
+        <i class="funbg err-pay"></i>
         <!-- <i class="funbg err-pay"></i>/ -->
         <!-- <span>恭喜您，预约成功！</span> -->
         <span>预约失败</span>
@@ -17,7 +17,7 @@
       <!-- 失败 -->
       <!-- <span class="c">充值失败</span> -->
     </div>
-    <!-- v-if="充值成功 -->
+    <!-- v-if="预约成功 -->
     <div class="pay-message">
       <p>
         <span class="title">就诊取号：</span>
@@ -39,11 +39,17 @@
     <!-- 否则失败 -->
     <div class="err-message">
       <p class="err-title">充值失败</p>
-      <p>xxxxxxxxx</p>
+      <p>就诊当天请携带就诊卡，无就诊就诊当天请携带就诊卡，无就诊就诊当天请携带就诊卡</p>
     </div>
-    <div class="appoint-btn flex-r">
-      <span >查看预约</span>
+    <!-- 预约成功 -->
+    <!-- <div class="appoint-btn flex-r">
+      <span>查看预约</span>
       <span>预约陪诊</span>
+    </div> -->
+    <!-- 预约失败 -->
+    <div class="appoint-btn flex-r fail-appoint">
+      <span>查看订单</span>
+      <span>从新支付</span>
     </div>
   </div>
 </template>
@@ -69,6 +75,7 @@ export default {
   //   height: 480px;
   position: relative;
   background-color: #fff;
+  padding-bottom: 45px+88;
   > .bg {
     width: 100%;
     height: 480px;
@@ -132,6 +139,8 @@ export default {
   }
   > .err-message {
     padding: 30px;
+    font-size: 28px;
+    color: #666;
     > .err-title {
       font-size: 30px;
       color: #ffa900;
@@ -148,18 +157,19 @@ export default {
   height: 88px;
   background: rgba(0, 160, 234, 1);
   border-radius: 44px;
-  margin: 0 auto;
-  >span{
-    flex:1;
+  > span {
+    flex: 1;
     color: #fff;
     font-size: 34px;
     text-align: center;
     line-height: 88px;
-
   }
-  >span:first-child{
+  > span:first-child {
     border-right: 1px solid #fff;
   }
+}
+.fail-appoint{
+  background-color: #FBAA0C;
 }
 .succ-bg {
   background-image: url("../../assets/images/bg_ico_bg@2x.png");

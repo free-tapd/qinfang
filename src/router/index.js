@@ -3,7 +3,6 @@ import Router from 'vue-router';
 import Home from '@/page/VmHome';
 import Index from '@/page/index/index';
 import Service from '@/page/service/index';
-import Inquiry from '@/page/inquiry/index';
 import Mine from '@/page/mine/index';
 import hospitalMessage from '@/page/index/hospitalMessage';
 import everyList from '@/page/index/everyList';
@@ -24,7 +23,9 @@ import sureAppointment from '@/page/index/sureAppointment';
 import partmentsList from '@/page/index/partmentsList';
 import docutorAppointmentDetail from '@/page/index/docutorAppointmentDetail';
 import successAppointment from '@/page/index/successAppointment';
-
+import docutorHome from '@/page/index/docutorHome';
+// 引入问诊路由
+import inquiry from "./inquiry.js"
 Vue.use(Router);
 
 export default new Router({
@@ -35,10 +36,7 @@ export default new Router({
 			name: 'index',
 			component: Index
 		},
-		{
-			path: '/inquiry',
-			component: Inquiry
-		},
+	
 		{
 			path: '/service',
 			component: Service
@@ -54,16 +52,16 @@ export default new Router({
 		{
 			path: '/everyList',
 			component: everyList,
-			beforeEnter(to,from,next){
-				document.getElementById('QF').innerHTML="每日清单"
-				next()
+			beforeEnter(to, from, next) {
+				document.getElementById('QF').innerHTML = '每日清单';
+				next();
 			}
 		},
 		{
 			path: '/historyList',
 			component: historyList,
-			beforeEnter(to,from,next){
-				document.getElementById('QF').innerHTML="历史清单"
+			beforeEnter(to, from, next) {
+				document.getElementById('QF').innerHTML = '历史清单';
 				next();
 			}
 		},
@@ -145,27 +143,39 @@ export default new Router({
 				document.getElementById('QF').innerHTML = '确认预约';
 				next();
 			}
-		},{
-      path:"/partmentsList",
-      component:partmentsList,
-      beforeEnter(to,from,next){
-        document.getElementById('QF').innerHTML="预约时间"
-        next()
-      }
-    },{
-      path:"/docutorAppointmentDetail",
-      component:docutorAppointmentDetail,
-      beforeEnter(to,from,next){
-        document.getElementById('QF').innerHTML="预约详情";
-        next()
-      }
-    },{
-			path:"/successAppointment",
-			component:successAppointment,
-			beforeEnter(to,from,next){
-				document.getElementById('QF').innerHTML="预约成功";
+		},
+		{
+			path: '/partmentsList',
+			component: partmentsList,
+			beforeEnter(to, from, next) {
+				document.getElementById('QF').innerHTML = '预约时间';
 				next();
 			}
-		}
+		},
+		{
+			path: '/docutorAppointmentDetail',
+			component: docutorAppointmentDetail,
+			beforeEnter(to, from, next) {
+				document.getElementById('QF').innerHTML = '预约详情';
+				next();
+			}
+		},
+		{
+			path: '/successAppointment',
+			component: successAppointment,
+			beforeEnter(to, from, next) {
+				document.getElementById('QF').innerHTML = '预约成功';
+				next();
+			}
+		},
+		{
+			path: '/docutorHome',
+			component: docutorHome,
+			beforeEnter(to, from, next) {
+				(document.getElementById('QF').innerHTML = '醫生主页'), next();
+			}
+		},
+		...inquiry,
+		
 	]
 });
