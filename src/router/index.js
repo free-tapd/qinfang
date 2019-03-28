@@ -26,6 +26,8 @@ import successAppointment from '@/page/index/successAppointment';
 import docutorHome from '@/page/index/docutorHome';
 // 引入问诊路由
 import inquiry from "./inquiry.js"
+// 引入我的路由
+import person from "./person.js"
 Vue.use(Router);
 
 export default new Router({
@@ -176,6 +178,7 @@ export default new Router({
 			}
 		},
 		...inquiry,
+		...person,
 		
 	]
 });

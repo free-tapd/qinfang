@@ -1,6 +1,6 @@
 <template>
   <div class="c">
-    <tabbar style="position:fixed" icon-class="home" @on-index-change="handleClick">
+    <tabbar style="position:fixed" icon-class="home" @on-index-change="onIndexChange">
       <tabbar-item link="/"  @on-item-click="handleClick1">
         <img slot="icon" src="../assets/images/tab/un_registration.png">
         <img slot="icon-active" src="../assets/images/tab/registration.png">
@@ -60,7 +60,7 @@ export default {
     TabbarItem
   },
   methods: {
-    handleClick(index) {
+    onIndexChange(index) {
       console.log(index)
       // this.cur=index;
       // console.log("点击");
