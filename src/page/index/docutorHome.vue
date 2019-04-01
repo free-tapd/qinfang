@@ -23,7 +23,7 @@
             </p>
           </div>
           <!-- 关注 -->
-          <div class="follow-btn">关注</div>
+          <div class="follow-btn">收藏</div>
         </div>
         <!-- seconed -->
         <!-- 一生的业务信息 -->
@@ -152,7 +152,7 @@
     <div class="cover" v-if="isCode" @click="isCode=!isCode">
       <div class="co">
         <ul class="qrcode-box">
-          <li class="title">
+          <li class="title" style="width:160px">
             <img src="https://ww1.sinaimg.cn/large/663d3650gy1fq66vw1k2wj20p00goq7n.jpg" alt>
             <p>李素珍</p>
           </li>
@@ -219,6 +219,7 @@ height: 100%;
   
   
   > .title {
+    // width: 320px;
     display: flex;
     align-items: center;
     justify-content: flex-start;

@@ -21,7 +21,7 @@
                 <div>我的订单</div>
             </div>
         </div>
-        <div class="person_type  person_line">
+        <div class="person_type  person_line" @click="changeJump('cardManger',{}) ">
             <div><img src="../../assets/images/person/person_appoint.png"></div>
             <div>卡管理</div>
         </div>

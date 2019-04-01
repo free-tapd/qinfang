@@ -53,22 +53,38 @@
       </div>-->
     </div>
     <div class="bg-btn vux-1px-t">
-        <div class="dis-btn">立即咨询</div>
+      <div class="dis-btn">立即咨询</div>
+    </div>
+    <!-- 确认就诊人 -->
+    <div class="cover">
+       <div class="sure-sick">
+          <p class="title">确认就诊人</p>
+          <p class="content">刘航 电话：1851611421</p>
+          <ul class="sick-btn">
+            <li>取消</li>
+            <li>确认</li>
+          </ul>
+        </div>
     </div>
     
   </div>
 </template>
 <script>
-import { Cell, Group } from "vux";
+import { Cell, Group, TransferDomDirective as TransferDom, XDialog } from "vux";
 export default {
   data() {
     return {
-      isReceive: true
+      isReceive: true,
+      isx: true
     };
+  },
+  directives: {
+    TransferDom
   },
   components: {
     Cell,
-    Group
+    Group,
+    XDialog
   },
   beforeRouteEnter(to, from, next) {
     console.log("进来了");
@@ -78,8 +94,8 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.vg{
-    padding-bottom: 140px;
+.vg {
+  padding-bottom: 140px;
 }
 .dis-btn {
   text-align: center;
@@ -95,13 +111,13 @@ export default {
   color: rgba(255, 255, 255, 1);
   line-height: 88px;
 }
-.bg-btn{
-    height: 140px;
-    background-color: #fff;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
+.bg-btn {
+  height: 140px;
+  background-color: #fff;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 .video-sick {
   background-color: #fff;
@@ -194,6 +210,47 @@ export default {
       height: 36px;
       display: block;
       margin-right: 12px;
+    }
+  }
+}
+.sure-sick {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -600px/2;
+  margin-top: -342px/2;
+  width: 600px;
+  height: 342px;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 10px;
+  font-size: 34px;
+  color: #666;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  > .title {
+    color: #333;
+  }
+  > .content {
+    font-size: 30px;
+  }
+  > .sick-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    > li {
+      width: 250px;
+      height: 88px;
+      background: rgba(240, 240, 240, 1);
+      border-radius: 6px;
+      color: #7F7F7F;
+      line-height: 88px;
+      text-align: center;
+    }
+    >li:last-child{
+      color: #42A0E2;
     }
   }
 }
