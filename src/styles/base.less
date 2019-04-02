@@ -91,6 +91,7 @@ ul body {
 	top: 0;
 	bottom: 0;
 	background-color: rgba(0, 0, 0, .4);
+	z-index: 1000;
 }
 .funbg {
 	background-size: contain;
@@ -99,4 +100,17 @@ ul body {
 }
 ::-webkit-scrollbar {
 	display: none;
+}
+//placeholder 颜色设为#999
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #999;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #999;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #999;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #999;
 }

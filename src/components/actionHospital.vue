@@ -1,13 +1,13 @@
 <template>
-  <div class="">
+  <div class>
     <!-- 按需搜索 -->
-    <div class="search-box">
-      <div class="pannel-search-hospital" >
+    <div class="search-box" v-if="actionShow">
+      <div class="pannel-search-hospital">
         <!-- 1 -->
         <ul class="pannel-left">
           <li>全部</li>
           <li>保定</li>
-          <li v-for="(v,i) in 10" :key="v" :class="{'active-item':cur2==i}"  @click.stop="cur2=i">邯郸</li>
+          <li v-for="(v,i) in 10" :key="v" :class="{'active-item':cur2==i}" @click.stop="cur2=i">邯郸</li>
         </ul>
         <!-- 2 -->
         <ul class="pannel-right">
@@ -24,8 +24,7 @@
       <div class="pannel-search-hospital pannel-search-department" v-if="cur==2">
         <!-- 1 -->
         <ul class="pannel-left">
-          
-          <li v-for="(v,i) in 10" :key="i" :class="{'active-item':cur1==i}"  @click.stop="cur1=i">内科</li>
+          <li v-for="(v,i) in 10" :key="i" :class="{'active-item':cur1==i}" @click.stop="cur1=i">内科</li>
         </ul>
         <!-- 2 -->
         <ul class="pannel-right">
@@ -66,6 +65,12 @@
 <script>
 import { Flexbox, FlexboxItem } from "vux";
 export default {
+  props: {
+    actionShow: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       tabArr: [
@@ -109,8 +114,8 @@ export default {
         }
       ],
       cur: 0,
-      cur1:0,
-      cur2:0,
+      cur1: 0,
+      cur2: 0,
       activeId: -1
     };
   },
@@ -125,18 +130,18 @@ export default {
   methods: {
     allHandler(v) {
       console.log(v);
-     
+
       this.activeId = v.id;
       if (this.cur == v.id) {
         this.cur = 0;
         document.getElementsByTagName("body")[0].style.overflow = "";
       } else {
-        this.cur = v.id; 
+        this.cur = v.id;
         document.getElementsByTagName("body")[0].style.overflow = "hidden";
       }
     },
-    chooseTag(item,j) {
-      item.choose.cur=j
+    chooseTag(item, j) {
+      item.choose.cur = j;
     }
   }
 };
@@ -151,7 +156,7 @@ export default {
 
   // transform: rotate(180deg);s
 }
-.active-item{
+.active-item {
   background-color: #fff;
   color: #00a0e9;
 }
@@ -241,7 +246,7 @@ export default {
   }
 }
 .pannel-search-all {
-  height: auto!important;
+  height: auto !important;
   flex-direction: column;
   .choose-from {
     padding: 33px;
@@ -271,20 +276,20 @@ export default {
       }
     }
   }
-  .choose-btn{
+  .choose-btn {
     // width: 100%;
     height: 88px;
     display: flex;
-    >span{
+    > span {
       flex: 1;
       text-align: center;
       line-height: 88px;
-      background-color: #F5FBFF;
-      color: #42A0E2;
+      background-color: #f5fbff;
+      color: #42a0e2;
       font-size: 24px;
     }
-    >span:last-child{
-      background-color: #42A0E2;
+    > span:last-child {
+      background-color: #42a0e2;
       color: #fff;
     }
   }

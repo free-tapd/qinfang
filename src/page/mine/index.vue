@@ -12,7 +12,7 @@
                 <div><img src="../../assets/images/person/person_service1.png"></div>
                 <div>我的预约</div>
             </div>
-            <div class="service_sub">
+            <div class="service_sub" @click="changeJump('/myServer',{})">
                 <div><img src="../../assets/images/person/person_service2.png"></div>
                 <div>我的服务</div>
             </div>
@@ -25,7 +25,7 @@
             <div><img src="../../assets/images/person/person_appoint.png"></div>
             <div>卡管理</div>
         </div>
-        <div class="person_type  person_line">
+        <div class="person_type  person_line" @click="changeJump('/familyMember',{})">
             <div><img src="../../assets/images/person/person_home.png"></div>
             <div>家庭管理</div>
         </div>
