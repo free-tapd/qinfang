@@ -1,22 +1,34 @@
 <template>
-    <div class="info-list flex-r vux-1px-b">
+    <div class="info-list flex-r vux-1px-b" @click="infoDetail(infoItem)">
         <div class="img-box">
-            <img src="https://ww1.sinaimg.cn/large/663d3650gy1fq66vvsr72j20p00gogo2.jpg" alt="">
+            <img :src="infoItem.imageUrl" alt="">
         </div>
         <div class="info-title flex-c">
-            <p>当爸爸教训孩子，妈妈该在旁边做点啥，4点建议</p>
+            <p>{{infoItem.title}}</p>
             <div class="tag-list flex-r">
                 <p>
-                    <span> 育儿 1小时前</span>
+                    <span>  {{infoItem.gmtCreate}}</span>
                 </p>
-                <p class="read-info"> 阅读 <span> 15322</span></p>
+                <!-- <p class="read-info"> 阅读 <span> 15322</span></p> -->
             </div>
         </div>
     </div>
 </template>
 <script>
 export default {
-    
+    props:{
+        infoItem:{
+            type:Object,
+            default(){
+                return {}
+            }
+        }
+    },
+    methods:{
+        infoDetail(item){
+            this.$emit('infoDetail',item)
+        }
+    }
 }
 </script>
 <style lang="less" scoped>

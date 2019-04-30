@@ -1,5 +1,5 @@
 <template>
-  <div class="server-item">
+  <div class="server-item" @click="jump">
     <div class="server-title">
       <p class="server-left">
         <img src="../assets/images/person/service1.png" alt>
@@ -21,7 +21,13 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  methods:{
+    jump(){
+      this.$emit('myJump','')
+    }
+  }
+};
 </script>
 <style lang="less" scoped>
 .server-item {

@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@/page/VmHome';
 import Index from '@/page/index/index';
-import Service from '@/page/service/index';
+// import Service from '@/page/service/index';
 import Mine from '@/page/mine/index';
 import hospitalMessage from '@/page/index/hospitalMessage';
 import everyList from '@/page/index/everyList';
@@ -24,28 +24,34 @@ import partmentsList from '@/page/index/partmentsList';
 import docutorAppointmentDetail from '@/page/index/docutorAppointmentDetail';
 import successAppointment from '@/page/index/successAppointment';
 import docutorHome from '@/page/index/docutorHome';
+import moreLabel from '@/page/index/moreLabel';
 // 引入问诊路由
-import inquiry from "./inquiry.js"
+import inquiry from './inquiry.js';
 // 引入我的路由
-import person from "./person.js"
+import person from './person.js';
+// 引入服务模块的的内容
+import service from './service.js';
 Vue.use(Router);
 
-export default new Router({
+let router= new Router({
 	// mode:'history',
 	routes: [
+		// {path:"*",redirect:Index},
 		{
 			path: '/',
 			name: 'index',
-			component: Index
+			component: Index,
+			meta:{
+				title:"首页"
+			}
 		},
-	
-		{
-			path: '/service',
-			component: Service
-		},
+
 		{
 			path: '/mine',
-			component: Mine
+			component: Mine,
+			meta:{
+				title:"我的"
+			}
 		},
 		{
 			path: '/hospitalMessage',
@@ -90,9 +96,8 @@ export default new Router({
 		{
 			path: '/Hospitalization',
 			component: Hospitalization,
-			beforeEnter(to, from, next) {
-				document.getElementById('QF').innerHTML = '医院导航';
-				next();
+			meta:{
+				title:"医院导航"
 			}
 		},
 		{
@@ -105,7 +110,10 @@ export default new Router({
 		},
 		{
 			path: '/queryReport',
-			component: queryReport
+			component: queryReport,
+			meta:{
+				title:"报告查询"
+			}
 		},
 		{
 			path: '/queryReportList',
@@ -176,9 +184,22 @@ export default new Router({
 			beforeEnter(to, from, next) {
 				(document.getElementById('QF').innerHTML = '醫生主页'), next();
 			}
+		},{
+			path:"/moreLabel",
+			component:moreLabel,
+			meta:{
+				title:"更多功能"
+			}
 		},
 		...inquiry,
 		...person,
-		
+		...service
 	]
 });
+//动态设置页面标题
+router.beforeEach((to, from, next) => {
+    window.document.title = to.meta.title;
+    next();
+})
+
+export default router;

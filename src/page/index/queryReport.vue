@@ -11,7 +11,7 @@
       </li>
       <li class="flex-r">
         <div class="report-left flex-r">
-          <p>检验报告</p>
+          <p>检查报告</p>
           <i class="funbg"></i>
         </div>
         <i class="funbg icon-report2"></i>

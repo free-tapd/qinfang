@@ -1,53 +1,66 @@
 <template>
-    <div class="bg">
+    <div class="vg">
         <div class="top">
+
             <div id="head_id"><img src="../../assets/images/person/head.png"></div>
-            <div id="name_id">jkhbdfkjdkfjdkf</div>
-            <div id="msg_id"><img src="../../assets/images/person/message.png"></div>
-            <div id="config_id"><img src="../../assets/images/person/config.png"></div>
-            <div class="red_dot"></div>
+            <div id="name_id"><span>jkhbdfkjdkfjdk</span>  <span class="iconfont icon-right1"></span></div>
+            <!-- <div id="msg_id"><img src="../../assets/images/person/message.png"></div> -->
+            <div id="config_id" @click="changeJump('/set',{})"><img src="../../assets/images/person/config.png"></div>
+            <!-- <div class="red_dot"></div> -->
         </div>
         <div class="person_service">
             <div class="service_sub" @click="changeJump('/appoint')">
-                <div><img src="../../assets/images/person/person_service1.png"></div>
+                <div><img src="../../assets/images/new_person/person_service1.png"></div>
                 <div>我的预约</div>
             </div>
+            <div class="service_sub">
+                <div><img src="../../assets/images/new_person/person_service2.png" alt=""></div>
+                <div>我的问诊</div>
+            </div>
             <div class="service_sub" @click="changeJump('/myServer',{})">
-                <div><img src="../../assets/images/person/person_service2.png"></div>
+                <div><img src="../../assets/images/new_person/person_service3.png"></div>
                 <div>我的服务</div>
             </div>
-            <div class="service_sub">
-                <div><img src="../../assets/images/person/person_service3.png"></div>
+            <div class="service_sub" @click="changeJump('/myOrder',{})">
+                <div><img src="../../assets/images/new_person/person_service4.png"></div>
                 <div>我的订单</div>
             </div>
         </div>
         <div class="person_type  person_line" @click="changeJump('cardManger',{}) ">
-            <div><img src="../../assets/images/person/person_appoint.png"></div>
+            <div><img src="../../assets/images/new_person/c1.png"></div>
             <div>卡管理</div>
         </div>
         <div class="person_type  person_line" @click="changeJump('/familyMember',{})">
-            <div><img src="../../assets/images/person/person_home.png"></div>
+            <div><img src="../../assets/images/new_person/c2.png"></div>
             <div>家庭管理</div>
         </div>
-        <div class="person_type person_line2">
-            <div><img src="../../assets/images/person/person_health.png"></div>
+        <div class="person_type person_line">
+            <div><img src="../../assets/images/new_person/c3.png"></div>
             <div>健康档案</div>
+        </div><div class="person_type person_line">
+            <div><img src="../../assets/images/new_person/c4.png"></div>
+            <div>我的体验</div>
+        </div><div class="person_type person_line2">
+            <div><img src="../../assets/images/new_person/c5.png"></div>
+            <div>我的监护</div>
         </div>
+        
         <div class="person_type  person_line">
-            <div><img src="../../assets/images/person/person_concern.png"></div>
+            <div><img src="../../assets/images/new_person/c6.png"></div>
             <div>我的关注</div>
         </div>
-        <div class="person_type  person_line">
-            <div><img src="../../assets/images/person/person_eval.png"></div>
+        <div class="person_type  person_line" @click="changeJump('/myEvaluate',{})">
+            <div><img src="../../assets/images/new_person/c7.png"></div>
             <div>我的评价</div>
         </div>
         <div class="person_type person_line2">
-            <div><img src="../../assets/images/person/person_doctor.png"></div>
+            <div><img src="../../assets/images/new_person/c8.png"></div>
             <div>我的医生</div>
         </div>
-        <div class="person_phone">
+        <!-- <div class="person_phone">
             客服电话：12580-6
-        </div>
+        </div> -->
+        <!-- 引入尾部 -->
         <Xfooter/>
     </div>
 </template>
@@ -66,6 +79,9 @@ export default {
 
 
 <style lang="less" scoped>
+    .vg{
+        padding-bottom: 140px;
+    }
     *{
         box-sizing:border-box;
     }
@@ -90,7 +106,8 @@ export default {
     #head_id{
         position: absolute;
         left:52px;
-        top:80px;
+        top:50%;
+        margin-top: -40px;
     }
     #head_id img{
         width: 80px;
@@ -99,13 +116,22 @@ export default {
     }
     #name_id{
         position: absolute;
-        padding-top:.5rem;
         left: 160px;
-        top: 76px;
-        width:580px;
+        top: 50%;
+        right: 0;
+        margin-top: -55px;
+        // width:580px;
         height:110px;
         font-size: 30px;
         color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    #name_id span.iconfont{
+        position: relative;
+        right: 32px;
+        font-size: 24px;
     }
     #msg_id{
         position: absolute;
@@ -151,13 +177,16 @@ export default {
     }
     .person_service .service_sub div:last-child{
         padding-top:22px;
-        font-size:28px;
+        font-size:26px;
         flex:1;
-        color:#999;
+        color:#81818199;
         white-space:nowrap;
     }
     .person_service .service_sub img{
-        width:80px;
+       width: 66px;
+       height: 66px;
+       display: block;
+       margin: 0 auto;
     }
     .person_type{
         display: flex;
@@ -182,7 +211,7 @@ export default {
         margin-bottom:20px;
     }
     .person_type img{
-        width:40px;
+        width:50px;
         vertical-align: -4px
     }
     .person_type div:last-child{

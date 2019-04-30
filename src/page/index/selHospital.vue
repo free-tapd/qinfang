@@ -9,15 +9,15 @@
     <div class="departments-list flex-r">
       <!-- 左边 -->
       <ul class="department-left">
-        <li v-for="(v,i) in 10" :key="i" :class="{'active': i==cur}" @click="cur=i">石家庄</li>
+        <li v-for="(v,i) in cityList" :key="i" :class="{'active': i==cur}" @click="clickHospital(v.id,v.text,i)">{{v.text}}</li>
       </ul>
       <!-- 右边 -->
       <ul class="department-right">
-        <li v-for=" v in 10" :key="v" class="flex-r" @click="changeJump('/departments',{})">
-            <p class=" funbg icon-hos"></p>
+        <li v-for=" (v,i) in hospitalList" :key="i" class="flex-r" @click="saveHospitalCode1(v)">
+            <p class=" funbg icon-hos" :style="{backgroundImage:`url(${v.iconUrl})`}"></p>
             <div class="hospital-inner">
-                <p> 河北医科大学第二医院</p>
-                <span>三级甲等</span>
+                <p> {{v.hospitalName}}</p>
+                <span>{{v.hospitalLevel}}</span>
             </div>
 
         </li>
@@ -48,12 +48,64 @@
   </div>
 </template>
 <script>
+import {post} from "@/utils/http"
+import {mapMutations} from "vuex";
 export default {
   data() {
     return {
-      isShow: true,
-      cur: 0
+      isShow: 0,
+      cur: 0,
+      cityList:[],
+      hospitalList:[]
     };
+  },
+  mounted(){
+    this.getHospitalList();
+  },
+  methods:{
+    ...mapMutations(['saveHospitalCode',"saveCity","saveHospitalLimit"]),
+    // 获取医院列表
+    getHospitalList(){
+      post('hebHealthyApp.app.baseHospitalInfo.getCityListHospitalList',{version:1}).then(res=>{
+        // console.log(res)
+        if(res.code==0){
+          this.cityList=res.data.cityList;
+          this.clickHospital(this.cityList[0].id,this.cityList[0].text)
+        }
+      })
+    },
+    //点击地名获取当前地区的所有医院
+    clickHospital(id,text,index=0){
+      this.cur=index;
+      let arr=[];
+      this.cityList.forEach(v=>{
+        if(v.id==id){
+          arr=v.hospitalList
+        }
+      })
+      this.hospitalList=arr;
+      this.saveCity({id,cityName:text});
+    },
+    saveHospitalCode1(item){
+      // localStorage.setItem('hospitalCode',item.hospitalCode);
+      this.saveHospitalCode(item)
+      // this.$router.back(-1);
+      this.hospitalLimit()
+      this.changeJump('./departments',{})
+      
+
+    },
+     // 查询当前医院的权限
+      hospitalLimit(){
+        this.$post('hebHealthyApp.app.baseHospitalInfo.getHospitalExtendByHospitalCode',{hospitalCode:this.hospitalCode}).then(res=>{
+          console.log(res);
+          if(res.data==0){
+             this.limitList=res.data
+          this.saveHospitalLimit(res.data);
+          }
+         
+        })
+      }
   }
 };
 </script>
@@ -82,11 +134,17 @@ export default {
   }
   > .departments-list {
     // justify-content: baseline;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
     font-size: 30px;
     > .department-left {
       // position: fixed;
       // bottom: 0;
       // left: 0;
+      overflow: scroll;
       flex: 1;
       > li {
         padding: 30px 0;
@@ -94,6 +152,7 @@ export default {
       }
     }
     > .department-right {
+      overflow: scroll;
       flex: 3;
       background-color: #fff;
       > li {

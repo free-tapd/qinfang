@@ -1,12 +1,10 @@
 <template>
   <div class="vg">
     <div class="my-server">
-        <div class="all-server">
-            
-        </div>
+      <div class="all-server"></div>
       <Xtab :tabArr="tabArr"/>
       <div class="c">
-        <serverList v-for="v in 10 " :key="v"/>
+        <serverList v-for="v in 10 " :key="v" @myJump="myJump"/>
       </div>
     </div>
   </div>
@@ -23,6 +21,11 @@ export default {
   components: {
     Xtab,
     serverList
+  },
+  methods:{
+    myJump(){
+      this.changeJump('/serverDetail',{})
+    }
   }
 };
 </script>
